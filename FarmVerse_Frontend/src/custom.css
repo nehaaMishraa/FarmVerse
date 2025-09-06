@@ -1,0 +1,306 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Lato:wght@400;700&display=swap');
+
+/* Define our new, earthy color palette */
+:root {
+  --farm-green-dark: #22c55e; /* More vibrant green */
+  --farm-green-light: #4ade80; /* Lighter vibrant green */
+  --farm-green-accent: #16a34a; /* Medium green */
+  --farm-brown: #582f0e;
+  --farm-beige: #f4f1de;
+  --farm-accent: #e07a5f; /* A terracotta accent color */
+}
+
+/* Apply base styles */
+body {
+  font-family: 'Lato', sans-serif;
+  background: 
+    linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.3) 100%),
+    url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  color: var(--farm-brown);
+  position: relative;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Merriweather', serif;
+  color: var(--farm-green-dark);
+}
+
+/*
+ Dynamic Backgrounds
+ These classes will be applied by React based on the time of day.
+*/
+.bg-morning {
+  background-image: linear-gradient(rgba(244, 241, 222, 0.6), rgba(244, 241, 222, 0.6)), url('https://images.unsplash.com/photo-1444858291040-5c7f765d8767?q=80&w=2070&auto=format&fit=crop');
+}
+.bg-day {
+  background-image: linear-gradient(rgba(244, 241, 222, 0.7), rgba(244, 241, 222, 0.7)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=1932&auto=format&fit=crop');
+}
+.bg-evening {
+  background-image: linear-gradient(rgba(244, 241, 222, 0.6), rgba(244, 241, 222, 0.6)), url('https://images.unsplash.com/photo-1476820865390-c52aeebb9891?q=80&w=2070&auto=format&fit=crop');
+}
+
+.bg-morning, .bg-day, .bg-evening {
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  transition: background-image 1s ease-in-out;
+}
+
+
+/* Override Bootstrap component styles with our new theme */
+.btn-primary {
+  background-color: var(--farm-green-light);
+  border-color: var(--farm-green-dark);
+}
+.btn-primary:hover {
+  background-color: var(--farm-green-dark);
+  border-color: var(--farm-green-dark);
+}
+
+.card {
+  border: 1px solid rgba(0,0,0,0.1);
+  background-color: rgba(255, 255, 255, 0.7); /* More transparent cards */
+  backdrop-filter: blur(10px);
+}
+
+.navbar {
+  background-color: rgba(255, 255, 255, 0.7) !important;
+  backdrop-filter: blur(10px);
+}
+
+/* Custom styles for the advisor and progress tracker */
+.advisor-card {
+  background-color: #e9f5db !important; /* A light green to stand out */
+  border-left: 5px solid var(--farm-green-dark);
+}
+.progress-card {
+  border-left: 5px solid var(--farm-accent);
+}
+
+/* Tier Badge Styles */
+.badge-sm {
+  font-size: 0.7rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.badge-md {
+  font-size: 0.8rem;
+  padding: 0.35rem 0.7rem;
+}
+
+.badge-lg {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+}
+
+.badge-xl {
+  font-size: 1.2rem;
+  padding: 0.6rem 1.2rem;
+}
+
+/* Progress Bar Styles */
+.progress-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+/* Tier Progress Animation */
+.tier-progress .progress-bar {
+  transition: width 0.6s ease-in-out;
+}
+
+/* Tier Card Hover Effects */
+.tier-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+}
+
+/* Tier Badge Improvements */
+.tier-badge {
+  border-radius: 12px !important;
+  font-weight: 600 !important;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.tier-badge::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.tier-badge:hover::before {
+  left: 100%;
+}
+
+/* Leaderboard Table Improvements */
+.table th {
+  background-color: #e3f2fd !important;
+  border-bottom: 2px solid #3b82f6 !important;
+  font-weight: 600;
+  color: #1565c0;
+  font-size: 0.9rem;
+  padding: 1rem 0.75rem;
+}
+
+.table td {
+  vertical-align: middle;
+  padding: 1rem 0.75rem;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.table tbody tr:hover {
+  background-color: #f0f9ff;
+  transition: all 0.2s ease;
+}
+
+/* Rank Number Styling */
+.rank-number {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #22c55e, #4ade80);
+  color: white;
+  font-weight: 600;
+  font-size: 0.9rem;
+  line-height: 32px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(34, 197, 94, 0.3);
+}
+
+/* Farmer Avatar */
+.farmer-avatar {
+  display: flex;
+  align-items: center;
+}
+
+.avatar-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #22c55e, #4ade80);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+  box-shadow: 0 2px 4px rgba(34, 197, 94, 0.2);
+}
+
+/* Points Badge */
+.points-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #16a34a, #22c55e);
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  box-shadow: 0 2px 4px rgba(22, 163, 74, 0.2);
+  min-width: 50px;
+  text-align: center;
+}
+
+/* Leaderboard Row Styling */
+.leaderboard-row {
+  transition: all 0.2s ease;
+}
+
+.leaderboard-row:hover {
+  background-color: #f0f9ff !important;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.1);
+}
+
+/* Card Header Styling */
+.card-header.bg-success {
+  background: linear-gradient(135deg, #22c55e, #4ade80) !important;
+  border: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .table-responsive {
+    font-size: 0.85rem;
+  }
+  
+  .avatar-circle {
+    width: 32px;
+    height: 32px;
+    font-size: 0.9rem;
+  }
+  
+  .rank-number {
+    width: 28px;
+    height: 28px;
+    font-size: 0.8rem;
+    line-height: 28px;
+  }
+  
+  .points-badge {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Clean Table Design */
+.table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.table thead th {
+  border: none;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Tier Badge Improvements for Farming Theme */
+.tier-badge {
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  position: relative;
+  overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.tier-badge::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.tier-badge:hover::before {
+  left: 100%;
+}
